@@ -1,0 +1,43 @@
+{
+  "name": "vue-tsx",
+  "version": "1.0.5",
+  "description": "Strongly-typed Vues using standard TSX output",
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "dependencies": {
+    "vue": "^2.3.4",
+    "vue-class-component": "^5.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrcrowl/vue-tsx.git"
+  },
+  "keywords": [
+    "vue",
+    "tsx",
+    "typescript"
+  ],
+  "author": "mrcrowl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrcrowl/vue-tsx/issues"
+  },
+  "homepage": "https://github.com/mrcrowl/vue-tsx#readme",
+  "scripts": {
+    "clean": "rimraf dist && rimraf coverage",
+    "compile": "tsc --pretty --watch",
+    "build": "npm run clean && npm run compile",
+    "test": "npm run coverage",
+    "test-only": "mocha --recursive dist/**/*.spec.js",
+    "test-watch": "npm run test-only -- --watch",
+    "test-debug": "mocha --debug-brk --debug=0.0.0.0:5858 dist/**/*.spec.js",
+    "coverage": "rimraf coverage && nyc --reporter=html --reporter=text --reporter=lcov -x **/*.spec.js npm run test-only"
+  }
+}

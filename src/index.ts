@@ -1,6 +1,14 @@
 import _Vue, { VNode, VNodeData } from 'vue'
 import { createDecorator } from "vue-class-component"
 
+// add generic type for props to handle its type from jsx
+// export { _Vue as Vue }
+export declare class Vue<P> extends _Vue
+{
+    _propsBrand: Readonly<P>
+}
+(<any>exports).Vue = _Vue
+
 function processKey(hAttr: VNodeData, tsxAttr: { [key: string]: any }, key: string)
 {
     if (/^on[A-Z]/.test(key))
@@ -37,7 +45,7 @@ function processKey(hAttr: VNodeData, tsxAttr: { [key: string]: any }, key: stri
     return hAttr
 }
 
-function TSXRender(): PropertyDecorator
+export function TSXRender(): PropertyDecorator
 {
     return function (target: any, key: string)
     {
@@ -64,14 +72,6 @@ function TSXRender(): PropertyDecorator
         })(target, key);
     };
 }
-
-// add generic type for props to handle its type from jsx
-declare class Vue<P> extends _Vue
-{
-    _propsBrand: Readonly<P>
-}
-
-export default Vue
 
 type NativeAnimationEvent = AnimationEvent
 type NativeClipboardEvent = ClipboardEvent

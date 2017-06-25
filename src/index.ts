@@ -1,4 +1,4 @@
-import _Vue, { VNode, VNodeData } from 'vue'
+import _Vue, { VNode, VNodeData, VNodeDirective } from 'vue'
 import { createDecorator } from "vue-class-component"
 
 // add generic type for props to handle its type from jsx
@@ -35,9 +35,10 @@ function processKey(hAttr: VNodeData, tsxAttr: { [key: string]: any }, key: stri
         case "class":
         case "style":
         case "ref":
-        case "slot":
+        case "slot": 
+        case "directives":
             hAttr[key] = tsxAttr[key]
-            break
+            break 
 
         default:
             hAttr.attrs![key] = tsxAttr[key]
@@ -1622,13 +1623,18 @@ export declare namespace VueTSX
         domPropsInnerHTML?: string
     }
 
-    type ClassNamesSpecifier = { [className: string]: boolean | undefined } | string[] | string
-    interface ClassProperty { class?: ClassNamesSpecifier | ClassNamesSpecifier[] }
+    type ClassNamesSpecifier = { [className: string]: false | true | boolean | undefined | null } | string[] | string
+    interface VueProperties
+    {
+        key?: string | number
+        ref?: string
+        class?: ClassNamesSpecifier | ClassNamesSpecifier[]
+        style?: CSSProperties
+        directives?: Partial<VNodeDirective>[]
+    }
 
     interface HTMLAttributes
     {
-        // specialised Vue versions of standard attributes
-        style?: CSSProperties
 
         // Standard HTML Attributes
         accept?: string
@@ -1743,7 +1749,7 @@ export declare namespace VueTSX
         start?: number
         step?: number | string
         summary?: string
-        tabindex?: number
+        tabindex?: number | string
         target?: string
         title?: string
         type?: string
@@ -1767,7 +1773,7 @@ export declare namespace VueTSX
         class?: ClassNamesSpecifier
     }
 
-    interface HTMLProps<T extends HTMLElement> extends HTMLAttributes, HTMLProperties, DOMEvents<T>, ClassProperty { }
+    interface HTMLProps<T extends HTMLElement> extends HTMLAttributes, HTMLProperties, DOMEvents<T>, VueProperties { }
 
     interface ChangeTargetHTMLProps<T extends HTMLElement> extends HTMLProps<T>
     {
@@ -1789,6 +1795,9 @@ declare global
 
         interface IntrinsicElements
         {
+            slot: { name?: string }
+            template: VueTSX.HTMLProps<HTMLElement>
+
             a: VueTSX.HTMLProps<HTMLAnchorElement>
             abbr: VueTSX.HTMLProps<HTMLElement>
             address: VueTSX.HTMLProps<HTMLElement>

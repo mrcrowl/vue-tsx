@@ -137,7 +137,7 @@ export declare namespace VueTSX
         // MouseEvents
         onClick?: (e: MouseEvent) => any
         onContextMenu?: (e: VueMouseEvent<T>) => any
-        onDoubleClick?: (e: VueMouseEvent<T>) => any
+        onDblClick?: (e: VueMouseEvent<T>) => any
         onDrag?: (e: VueDragEvent<T>) => any
         onDragEnd?: (e: VueDragEvent<T>) => any
         onDragEnter?: (e: VueDragEvent<T>) => any

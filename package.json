@@ -1,6 +1,6 @@
 {
   "name": "vue-tsx",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Strongly-typed Vues using standard TSX output",
   "files": [
     "dist/index.js",

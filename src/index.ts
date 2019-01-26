@@ -1,5 +1,5 @@
-import _Vue, { VNode, VNodeData, VNodeDirective } from 'vue'
-import { createDecorator } from "vue-class-component"
+import _Vue, { VNode, VNodeData, VNodeDirective } from 'vue';
+import { createDecorator } from "vue-class-component";
 
 // add generic type for props to handle its type from jsx
 // export { _Vue as Vue }
@@ -7,7 +7,7 @@ export declare class Vue<P> extends _Vue
 {
     _propsBrand: Readonly<P>
 }
-(<any>exports).Vue = _Vue
+(<any>exports).Vue = _Vue 
 
 function processKey(hAttr: VNodeData, tsxAttr: { [key: string]: any }, key: string)
 {
@@ -35,24 +35,24 @@ function processKey(hAttr: VNodeData, tsxAttr: { [key: string]: any }, key: stri
         case "class":
         case "style":
         case "ref":
-        case "slot": 
+        case "slot":
         case "directives":
             hAttr[key] = tsxAttr[key]
-            break 
+            break
 
         default:
             hAttr.attrs![key] = tsxAttr[key]
     }
     return hAttr
 }
-
+ 
 export function TSXRender(): PropertyDecorator
 {
     return function (target: any, key: string)
     {
         console.log(target, key)
         createDecorator((componentOptions, k) =>
-        {
+        { 
             const orender = componentOptions.render!
             const render = function (this: any, h: any)
             {
@@ -1620,7 +1620,9 @@ export declare namespace VueTSX
 
     interface HTMLProperties
     {
+        domPropsValue?: string
         domPropsInnerHTML?: string
+        domPropsTextContent?: string
     }
 
     type ClassNamesSpecifier = { [className: string]: false | true | boolean | undefined | null } | string[] | string
@@ -1765,6 +1767,271 @@ export declare namespace VueTSX
         autosave?: string
     }
 
+    interface SVGAttributes
+    {
+        // Attributes which also defined in HTMLAttributes
+        // See comment in SVGDOMPropertyConfig.js
+        className?: string;
+        color?: string;
+        height?: number | string;
+        id?: string;
+        lang?: string;
+        max?: number | string;
+        media?: string;
+        method?: string;
+        min?: number | string;
+        name?: string;
+        style?: CSSProperties;
+        target?: string;
+        type?: string;
+        width?: number | string;
+
+        // Other HTML properties supported by SVG elements in browsers
+        role?: string;
+        tabIndex?: number;
+
+        // SVG Specific attributes
+        accentHeight?: number | string;
+        accumulate?: "none" | "sum";
+        additive?: "replace" | "sum";
+        alignmentBaseline?: "auto" | "baseline" | "before-edge" | "text-before-edge" | "middle" | "central" | "after-edge" | "text-after-edge" | "ideographic" | "alphabetic" | "hanging" | "mathematical" | "inherit";
+        allowReorder?: "no" | "yes";
+        alphabetic?: number | string;
+        amplitude?: number | string;
+        arabicForm?: "initial" | "medial" | "terminal" | "isolated";
+        ascent?: number | string;
+        attributeName?: string;
+        attributeType?: string;
+        autoReverse?: number | string;
+        azimuth?: number | string;
+        baseFrequency?: number | string;
+        baselineShift?: number | string;
+        baseProfile?: number | string;
+        bbox?: number | string;
+        begin?: number | string;
+        bias?: number | string;
+        by?: number | string;
+        calcMode?: number | string;
+        capHeight?: number | string;
+        clip?: number | string;
+        clipPath?: string;
+        clipPathUnits?: number | string;
+        clipRule?: number | string;
+        colorInterpolation?: number | string;
+        colorInterpolationFilters?: "auto" | "sRGB" | "linearRGB" | "inherit";
+        colorProfile?: number | string;
+        colorRendering?: number | string;
+        contentScriptType?: number | string;
+        contentStyleType?: number | string;
+        cursor?: number | string;
+        cx?: number | string;
+        cy?: number | string;
+        d?: string;
+        decelerate?: number | string;
+        descent?: number | string;
+        diffuseConstant?: number | string;
+        direction?: number | string;
+        display?: number | string;
+        divisor?: number | string;
+        dominantBaseline?: number | string;
+        dur?: number | string;
+        dx?: number | string;
+        dy?: number | string;
+        edgeMode?: number | string;
+        elevation?: number | string;
+        enableBackground?: number | string;
+        end?: number | string;
+        exponent?: number | string;
+        externalResourcesRequired?: number | string;
+        fill?: string;
+        fillOpacity?: number | string;
+        fillRule?: "nonzero" | "evenodd" | "inherit";
+        filter?: string;
+        filterRes?: number | string;
+        filterUnits?: number | string;
+        floodColor?: number | string;
+        floodOpacity?: number | string;
+        focusable?: number | string;
+        fontFamily?: string;
+        fontSize?: number | string;
+        fontSizeAdjust?: number | string;
+        fontStretch?: number | string;
+        fontStyle?: number | string;
+        fontVariant?: number | string;
+        fontWeight?: number | string;
+        format?: number | string;
+        from?: number | string;
+        fx?: number | string;
+        fy?: number | string;
+        g1?: number | string;
+        g2?: number | string;
+        glyphName?: number | string;
+        glyphOrientationHorizontal?: number | string;
+        glyphOrientationVertical?: number | string;
+        glyphRef?: number | string;
+        gradientTransform?: string;
+        gradientUnits?: string;
+        hanging?: number | string;
+        horizAdvX?: number | string;
+        horizOriginX?: number | string;
+        ideographic?: number | string;
+        imageRendering?: number | string;
+        in2?: number | string;
+        in?: string;
+        intercept?: number | string;
+        k1?: number | string;
+        k2?: number | string;
+        k3?: number | string;
+        k4?: number | string;
+        k?: number | string;
+        kernelMatrix?: number | string;
+        kernelUnitLength?: number | string;
+        kerning?: number | string;
+        keyPoints?: number | string;
+        keySplines?: number | string;
+        keyTimes?: number | string;
+        lengthAdjust?: number | string;
+        letterSpacing?: number | string;
+        lightingColor?: number | string;
+        limitingConeAngle?: number | string;
+        local?: number | string;
+        markerEnd?: string;
+        markerHeight?: number | string;
+        markerMid?: string;
+        markerStart?: string;
+        markerUnits?: number | string;
+        markerWidth?: number | string;
+        mask?: string;
+        maskContentUnits?: number | string;
+        maskUnits?: number | string;
+        mathematical?: number | string;
+        mode?: number | string;
+        numOctaves?: number | string;
+        offset?: number | string;
+        opacity?: number | string;
+        operator?: number | string;
+        order?: number | string;
+        orient?: number | string;
+        orientation?: number | string;
+        origin?: number | string;
+        overflow?: number | string;
+        overlinePosition?: number | string;
+        overlineThickness?: number | string;
+        paintOrder?: number | string;
+        panose1?: number | string;
+        pathLength?: number | string;
+        patternContentUnits?: string;
+        patternTransform?: number | string;
+        patternUnits?: string;
+        pointerEvents?: number | string;
+        points?: string;
+        pointsAtX?: number | string;
+        pointsAtY?: number | string;
+        pointsAtZ?: number | string;
+        preserveAlpha?: number | string;
+        preserveAspectRatio?: string;
+        primitiveUnits?: number | string;
+        r?: number | string;
+        radius?: number | string;
+        refX?: number | string;
+        refY?: number | string;
+        renderingIntent?: number | string;
+        repeatCount?: number | string;
+        repeatDur?: number | string;
+        requiredExtensions?: number | string;
+        requiredFeatures?: number | string;
+        restart?: number | string;
+        result?: string;
+        rotate?: number | string;
+        rx?: number | string;
+        ry?: number | string;
+        scale?: number | string;
+        seed?: number | string;
+        shapeRendering?: number | string;
+        slope?: number | string;
+        spacing?: number | string;
+        specularConstant?: number | string;
+        specularExponent?: number | string;
+        speed?: number | string;
+        spreadMethod?: string;
+        startOffset?: number | string;
+        stdDeviation?: number | string;
+        stemh?: number | string;
+        stemv?: number | string;
+        stitchTiles?: number | string;
+        stopColor?: string;
+        stopOpacity?: number | string;
+        strikethroughPosition?: number | string;
+        strikethroughThickness?: number | string;
+        string?: number | string;
+        stroke?: string;
+        strokeDasharray?: string | number;
+        strokeDashoffset?: string | number;
+        strokeLinecap?: "butt" | "round" | "square" | "inherit";
+        strokeLinejoin?: "miter" | "round" | "bevel" | "inherit";
+        strokeMiterlimit?: string;
+        strokeOpacity?: number | string;
+        strokeWidth?: number | string;
+        surfaceScale?: number | string;
+        systemLanguage?: number | string;
+        tableValues?: number | string;
+        targetX?: number | string;
+        targetY?: number | string;
+        textAnchor?: string;
+        textDecoration?: number | string;
+        textLength?: number | string;
+        textRendering?: number | string;
+        to?: number | string;
+        transform?: string;
+        u1?: number | string;
+        u2?: number | string;
+        underlinePosition?: number | string;
+        underlineThickness?: number | string;
+        unicode?: number | string;
+        unicodeBidi?: number | string;
+        unicodeRange?: number | string;
+        unitsPerEm?: number | string;
+        vAlphabetic?: number | string;
+        values?: string;
+        vectorEffect?: number | string;
+        version?: string;
+        vertAdvY?: number | string;
+        vertOriginX?: number | string;
+        vertOriginY?: number | string;
+        vHanging?: number | string;
+        vIdeographic?: number | string;
+        viewBox?: string;
+        viewTarget?: number | string;
+        visibility?: number | string;
+        vMathematical?: number | string;
+        widths?: number | string;
+        wordSpacing?: number | string;
+        writingMode?: number | string;
+        x1?: number | string;
+        x2?: number | string;
+        x?: number | string;
+        xChannelSelector?: string;
+        xHeight?: number | string;
+        xlinkActuate?: string;
+        xlinkArcrole?: string;
+        xlinkHref?: string;
+        xlinkRole?: string;
+        xlinkShow?: string;
+        xlinkTitle?: string;
+        xlinkType?: string;
+        xmlBase?: string;
+        xmlLang?: string;
+        xmlns?: string;
+        xmlnsXlink?: string;
+        xmlSpace?: string;
+        y1?: number | string;
+        y2?: number | string;
+        y?: number | string;
+        yChannelSelector?: string;
+        z?: number | string;
+        zoomAndPan?: string;
+    }
+
     interface Attributes
     {
         key?: string | number
@@ -1774,6 +2041,7 @@ export declare namespace VueTSX
     }
 
     interface HTMLProps<T extends HTMLElement> extends HTMLAttributes, HTMLProperties, DOMEvents<T>, VueProperties { }
+    interface SVGProps<T extends SVGElement> extends SVGAttributes, DOMEvents<T>, VueProperties { }
 
     interface ChangeTargetHTMLProps<T extends HTMLElement> extends HTMLProps<T>
     {
@@ -1791,12 +2059,91 @@ declare global
             render?(h: any): Element | undefined
         }
         interface ElementAttributesProperty { _propsBrand: {} }
-        interface IntrinsicAttributes extends VueTSX.Attributes { }
+        interface IntrinsicAttributes extends VueTSX.Attributes
+        {
+            nativeOnCopy?: (e: ClipboardEvent) => any;
+            nativeOnCut?: (e: ClipboardEvent) => any;
+            nativeOnPaste?: (e: ClipboardEvent) => any;
+            nativeOnCompositionEnd?: (e: CompositionEvent) => any;
+            nativeOnCompositionStart?: (e: CompositionEvent) => any;
+            nativeOnCompositionUpdate?: (e: CompositionEvent) => any;
+            nativeOnFocus?: (e: FocusEvent) => any;
+            nativeOnBlur?: (e: FocusEvent) => any;
+            nativeOnChange?: (e: Event) => any;
+            nativeOnInput?: (e: Event) => any;
+            nativeOnReset?: (e: Event) => any;
+            nativeOnSubmit?: (e: Event) => any;
+            nativeOnInvalid?: (e: Event) => any;
+            nativeOnLoad?: (e: Event) => any;
+            nativeOnError?: (e: Event) => any;
+            nativeOnKeyDown?: (e: KeyboardEvent) => any;
+            nativeOnKeyPress?: (e: KeyboardEvent) => any;
+            nativeOnKeyUp?: (e: KeyboardEvent) => any;
+            nativeOnClick?: (e: MouseEvent) => any;
+            nativeOnContextMenu?: (e: MouseEvent) => any;
+            nativeOnDblClick?: (e: MouseEvent) => any;
+            nativeOnDrag?: (e: DragEvent) => any;
+            nativeOnDragEnd?: (e: DragEvent) => any;
+            nativeOnDragEnter?: (e: DragEvent) => any;
+            nativeOnDragExit?: (e: DragEvent) => any;
+            nativeOnDragLeave?: (e: DragEvent) => any;
+            nativeOnDragOver?: (e: DragEvent) => any;
+            nativeOnDragStart?: (e: DragEvent) => any;
+            nativeOnDrop?: (e: DragEvent) => any;
+            nativeOnMouseDown?: (e: MouseEvent) => any;
+            nativeOnMouseEnter?: (e: MouseEvent) => any;
+            nativeOnMouseLeave?: (e: MouseEvent) => any;
+            nativeOnMouseMove?: (e: MouseEvent) => any;
+            nativeOnMouseOut?: (e: MouseEvent) => any;
+            nativeOnMouseOver?: (e: MouseEvent) => any;
+            nativeOnMouseUp?: (e: MouseEvent) => any;
+            nativeOnSelect?: (e: Event) => any;
+            nativeOnTouchCancel?: (e: TouchEvent) => any;
+            nativeOnTouchEnd?: (e: TouchEvent) => any;
+            nativeOnTouchMove?: (e: TouchEvent) => any;
+            nativeOnTouchStart?: (e: TouchEvent) => any;
+            nativeOnScroll?: (e: UIEvent) => any;
+            nativeOnWheel?: (e: WheelEvent) => any;
+            nativeOnAnimationStart?: (e: AnimationEvent) => any;
+            nativeOnAnimationEnd?: (e: AnimationEvent) => any;
+            nativeOnAnimationIteration?: (e: AnimationEvent) => any;
+            nativeOnTransitionEnd?: (e: TransitionEvent) => any;
+        }
 
         interface IntrinsicElements
         {
             slot: { name?: string }
             template: VueTSX.HTMLProps<HTMLElement>
+            "transition-group": {
+                tag: string,
+                name?: string,
+                duration?: number | { enter?: number, leave?: number },
+                onBeforeEnter?: (el: Element) => any,
+                onAfterEnter?: (el: Element) => any,
+                onEnter?: (el: Element, done: boolean) => any,
+                onLeave?: (el: Element, done: boolean) => any,
+                "enter-class"?: string,
+                "enter-active-class"?: string,
+                "enter-to-class"?: string,
+                "leave-class"?: string,
+                "leave-active-class"?: string,
+                "leave-to-class"?: string,
+            },
+            "transition": {
+                name?: string,
+                mode?: "in-out" | "out-in",
+                duration?: number | { enter?: number, leave?: number },
+                onBeforeEnter?: (el: Element) => any,
+                onAfterEnter?: (el: Element) => any,
+                onEnter?: (el: Element, done: boolean) => any,
+                onLeave?: (el: Element, done: boolean) => any,
+                "enter-class"?: string,
+                "enter-active-class"?: string,
+                "enter-to-class"?: string,
+                "leave-class"?: string,
+                "leave-active-class"?: string,
+                "leave-to-class"?: string,
+            },
 
             a: VueTSX.HTMLProps<HTMLAnchorElement>
             abbr: VueTSX.HTMLProps<HTMLElement>
@@ -1912,6 +2259,66 @@ declare global
             "var": VueTSX.HTMLProps<HTMLElement>
             video: VueTSX.HTMLProps<HTMLVideoElement>
             wbr: VueTSX.HTMLProps<HTMLElement>
+
+            // svg
+            // SVG
+            svg: VueTSX.SVGProps<SVGSVGElement>;
+
+            animate: VueTSX.SVGProps<SVGElement>; // TODO: It is SVGAnimateElement but is not in TypeScript's lib.dom.d.ts for now.
+            animateTransform: VueTSX.SVGProps<SVGElement>; // TODO: It is SVGAnimateTransformElement but is not in TypeScript's lib.dom.d.ts for now.
+            circle: VueTSX.SVGProps<SVGCircleElement>;
+            clipPath: VueTSX.SVGProps<SVGClipPathElement>;
+            defs: VueTSX.SVGProps<SVGDefsElement>;
+            desc: VueTSX.SVGProps<SVGDescElement>;
+            ellipse: VueTSX.SVGProps<SVGEllipseElement>;
+            feBlend: VueTSX.SVGProps<SVGFEBlendElement>;
+            feColorMatrix: VueTSX.SVGProps<SVGFEColorMatrixElement>;
+            feComponentTransfer: VueTSX.SVGProps<SVGFEComponentTransferElement>;
+            feComposite: VueTSX.SVGProps<SVGFECompositeElement>;
+            feConvolveMatrix: VueTSX.SVGProps<SVGFEConvolveMatrixElement>;
+            feDiffuseLighting: VueTSX.SVGProps<SVGFEDiffuseLightingElement>;
+            feDisplacementMap: VueTSX.SVGProps<SVGFEDisplacementMapElement>;
+            feDistantLight: VueTSX.SVGProps<SVGFEDistantLightElement>;
+            feFlood: VueTSX.SVGProps<SVGFEFloodElement>;
+            feFuncA: VueTSX.SVGProps<SVGFEFuncAElement>;
+            feFuncB: VueTSX.SVGProps<SVGFEFuncBElement>;
+            feFuncG: VueTSX.SVGProps<SVGFEFuncGElement>;
+            feFuncR: VueTSX.SVGProps<SVGFEFuncRElement>;
+            feGaussianBlur: VueTSX.SVGProps<SVGFEGaussianBlurElement>;
+            feImage: VueTSX.SVGProps<SVGFEImageElement>;
+            feMerge: VueTSX.SVGProps<SVGFEMergeElement>;
+            feMergeNode: VueTSX.SVGProps<SVGFEMergeNodeElement>;
+            feMorphology: VueTSX.SVGProps<SVGFEMorphologyElement>;
+            feOffset: VueTSX.SVGProps<SVGFEOffsetElement>;
+            fePointLight: VueTSX.SVGProps<SVGFEPointLightElement>;
+            feSpecularLighting: VueTSX.SVGProps<SVGFESpecularLightingElement>;
+            feSpotLight: VueTSX.SVGProps<SVGFESpotLightElement>;
+            feTile: VueTSX.SVGProps<SVGFETileElement>;
+            feTurbulence: VueTSX.SVGProps<SVGFETurbulenceElement>;
+            filter: VueTSX.SVGProps<SVGFilterElement>;
+            foreignObject: VueTSX.SVGProps<SVGForeignObjectElement>;
+            g: VueTSX.SVGProps<SVGGElement>;
+            image: VueTSX.SVGProps<SVGImageElement>;
+            line: VueTSX.SVGProps<SVGLineElement>;
+            linearGradient: VueTSX.SVGProps<SVGLinearGradientElement>;
+            marker: VueTSX.SVGProps<SVGMarkerElement>;
+            mask: VueTSX.SVGProps<SVGMaskElement>;
+            metadata: VueTSX.SVGProps<SVGMetadataElement>;
+            path: VueTSX.SVGProps<SVGPathElement>;
+            pattern: VueTSX.SVGProps<SVGPatternElement>;
+            polygon: VueTSX.SVGProps<SVGPolygonElement>;
+            polyline: VueTSX.SVGProps<SVGPolylineElement>;
+            radialGradient: VueTSX.SVGProps<SVGRadialGradientElement>;
+            rect: VueTSX.SVGProps<SVGRectElement>;
+            stop: VueTSX.SVGProps<SVGStopElement>;
+            switch: VueTSX.SVGProps<SVGSwitchElement>;
+            symbol: VueTSX.SVGProps<SVGSymbolElement>;
+            text: VueTSX.SVGProps<SVGTextElement>;
+            textPath: VueTSX.SVGProps<SVGTextPathElement>;
+            tspan: VueTSX.SVGProps<SVGTSpanElement>;
+            use: VueTSX.SVGProps<SVGUseElement>;
+            view: VueTSX.SVGProps<SVGViewElement>;
+
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "vue-tsx",
-  "version": "1.0.7",
+  "version": "1.0.11",
   "description": "Strongly-typed Vues using standard TSX output",
   "files": [
     "dist/index.js",
@@ -13,6 +13,7 @@
     "vue-class-component": "^5.0.1"
   },
   "devDependencies": {
+    "rimraf": "^2.6.1",
     "typescript": "^2.3.4"
   },
   "repository": {
